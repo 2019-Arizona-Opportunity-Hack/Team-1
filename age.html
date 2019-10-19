@@ -16,13 +16,15 @@
 			
 			<main>
 				<h2>Are you 18 or older?</h2>
-				<input type="radio" name="ageQuestion" id="ageYes" value="yes" checked="checked">
-				<label for="ageYes">Yes</label>
-					
-				<input type="radio" name="ageQuestion" id="ageNo" value="no">
-				<label for="ageYes">No</label>
 				
-				<input type="submit" id="mySubmit" value="Submit">
+				<input type="radio" name="agePrompt" id="ageYes" value="Yes" onclick="selectYes()"/>
+				<label for="ageYes">Yes</label>
+				
+				<input type="radio" name="agePrompt" id="ageNo" value="No" onclick="selectNo()"/>
+				<label for="ageNo">No</label>
+				
+				<input type="submit" id="ageSubmit" value="Submit" onclick='checkChoice()'>
+			
 			</main>
 			
 			<footer>
@@ -30,4 +32,22 @@
 			</footer>
 		</div><!--Closes Prompt-->
 	</body>
+	
+	<script>
+		var choice;
+		
+		function selectYes() {
+			choice = 1;
+		}
+		
+		function selectNo() {
+			choice = 0;
+		}
+		
+		function checkChoice() {
+			if(choice == 1) {
+				window.location = 'police.html';
+			}
+		}
+	</script>
 </html>
