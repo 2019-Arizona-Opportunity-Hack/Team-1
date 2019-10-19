@@ -19,11 +19,10 @@ body {
 	box-shadow: 2px 2px 2px black;
 }
 
-#prefEmail, #prefPhone {
+#ageQuestion{
 	display: inline;
 	width: 20px;
 	height: 12px;
-	color: black;
 }
 
 header {
@@ -50,7 +49,7 @@ h2 {
 
 footer {
 	clear: right;
-	color: gray;
+	color: white;
 	text-align: center;
 	width: 100%;
 	padding: 5px 0;
