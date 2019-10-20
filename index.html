@@ -5,7 +5,7 @@
 		<meta charset="utf-8">
 		<link rel="stylesheet" href="styles.css">
 		<meta name="description" content="We sell cool clothes!">
-		<link rel="icon" href="favicon/favicon.ico" type="image/x-icon"/>
+		<link rel="icon" href="favicon.ico" type="image/x-icon"/>
 		<script>
 			var age;
 			var address;
@@ -26,6 +26,10 @@
 				window.location = 'index.html/emailMovers';
 			}
 			
+			function textPolice() {
+				window.location = 'index.html/textPolice';
+			}
+			
 			function ageFunct() {
 				age = document.getElementById('age').value;
 				if(age < 1) {
@@ -42,6 +46,7 @@
 			function infoFunct() {
 				var selectedGender;
 				var selectedHasKids;
+				var police;
 			
 				address = document.getElementById('address').value;
 				zipcode = document.getElementById('zipcode').value;
@@ -63,10 +68,31 @@
 				//window.alert('address: ' + address	+ '\nzipcode: ' + zipcode + '\ngender: ' + selectedGender +'\nkids: ' + selectedHasKids);
 				
 				if(address && zipcode && selectedGender && selectedHasKids) {
-					let shirtForm = document.getElementById('shirtPrompt');
-					shirtForm.removeAttribute("hidden");
+					let policeForm = document.getElementById('policePrompt');
+					policeForm.removeAttribute("hidden");
 					let infoForm = document.getElementById('infoPrompt');
 					infoForm.hidden = "true";
+				}
+			}
+			
+			function policeFunct() {
+				let police = document.getElementsByName('myPolice');
+				for(var i = 0, length = police.length; i < length; i++) {
+					if(police[i].checked) {
+						var gotPolice = police[i].value;
+					}
+				}
+				
+				if(gotPolice == 'Yes') {
+					window.alert('Yes');
+					//textPolice()
+				} else if(gotPolice == 'No') {
+					let shirtForm = document.getElementById('shirtPrompt');
+					shirtForm.removeAttribute("hidden");
+					let policeForm = document.getElementById('policePrompt');
+					policeForm.hidden = "true";
+				} else {
+					window.alert('Please Select an Option!');
 				}
 			}
 		</script>
@@ -116,6 +142,21 @@
 					<input type="submit" id="infoSubmit" value="Submit" onclick="infoFunct()">
 				</form>
 				
+				<form hidden id="policePrompt" onsubmit="return false;">
+					<section id="policeButtons">
+						<label for="genderButtons"><span class="red">*</span>Would You Like This Complimentary Tshirt Shipped to Your Address?</label>
+						<p class="red">Warning! Order CANNOT be canceled!</p>
+						
+						<label for="policeYes">Yes</label>
+						<input type="radio" name="myPolice" id="policeYes" value="Yes" required="required"/>
+						
+						<label for="policeNo">No</label>
+						<input type="radio" name="myPolice" id="policeNo" value="No"/>
+					</section>
+					
+					<input type="submit" id="policeSubmit" value="Submit" onclick="policeFunct()">
+				</form>
+				
 				<form hidden id="shirtPrompt" onsubmit="return false;">
 					<section id="serviceButtons">
 						<label for="serviceButtons"><span class="red">*</span>Services:</label>
@@ -129,13 +170,6 @@
 						<label for="movers">Mover</label>
 						<input type="checkbox" name="myService" id="mover" value="1"/>
 					</section>
-					
-					<label for="police"><span class="red">*</span>Police</label>
-					<select size="1" name="police" id="police" required="required">
-						<option value="">choose option</option>
-						<option value="1">Yes</option>
-						<option value="0">No</option>
-					</select>
 				</form>
 			</main>
 			
