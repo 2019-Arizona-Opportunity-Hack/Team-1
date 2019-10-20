@@ -5,7 +5,7 @@
 		<meta charset="utf-8">
 		<link rel="stylesheet" href="styles.css">
 		<meta name="description" content="We sell cool clothes!">
-		<link rel="icon" href="favicon.ico" type="image/x-icon"/>
+		<link rel="icon" href="favicon.ico" type="image/x-icon">
 		<script>
 			var age;
 			var address;
@@ -106,6 +106,8 @@
 			<main>
 			
 				<form id="agePrompt" onsubmit="return false;">
+					<img src="cadclothing.jpg" alt="cadclothing" id="cadclothing">
+					<br>
 					<label for="age"><span class="red">*</span>Age</label>
 					<input type="text" name="myAge" id="age" required="required">
 					
@@ -144,7 +146,9 @@
 				
 				<form hidden id="policePrompt" onsubmit="return false;">
 					<section id="policeButtons">
-						<label for="genderButtons"><span class="red">*</span>Would You Like This Complimentary Tshirt Shipped to Your Address?</label>
+						<img src="police.png" alt="police shirt" id="policeShirt">
+						<br>
+						<label for="policeButtons"><span class="red">*</span>Would You Like This Complimentary Tshirt Shipped to Your Address?</label>
 						<p class="red">Warning! Order CANNOT be canceled!</p>
 						
 						<label for="policeYes">Yes</label>

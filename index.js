@@ -7,7 +7,7 @@ const start = async () => {
 
     const server = Hapi.server({
         port: 3000,
-        host: '10.2.17.20'
+        host: '192.168.56.1'
     });
 
     await server.register(require('inert'));
@@ -136,7 +136,79 @@ const start = async () => {
             return h.file('styles.css');
         }
     });
+	
+	server.route({
+        method: 'GET',
+        path: '/alien.png',
+        handler: function (request, h) {
 
+            return h.file('alien.png');
+        }
+    });
+	
+	server.route({
+        method: 'GET',
+        path: '/bg.jpg',
+        handler: function (request, h) {
+
+            return h.file('bg.jpg');
+        }
+    });
+	
+	server.route({
+        method: 'GET',
+        path: '/cadclothing.jpg',
+        handler: function (request, h) {
+
+            return h.file('cadclothing.jpg');
+        }
+    });
+	
+	server.route({
+        method: 'GET',
+        path: '/cat.png',
+        handler: function (request, h) {
+
+            return h.file('cat.png');
+        }
+    });
+	
+	server.route({
+        method: 'GET',
+        path: '/grandma.png',
+        handler: function (request, h) {
+
+            return h.file('grandma.png');
+        }
+    });
+
+	server.route({
+        method: 'GET',
+        path: '/hotel.png',
+        handler: function (request, h) {
+
+            return h.file('hotel.png');
+        }
+    });
+	
+	server.route({
+        method: 'GET',
+        path: '/police.png',
+        handler: function (request, h) {
+
+            return h.file('police.png');
+        }
+    });
+	
+	server.route({
+        method: 'GET',
+        path: '/taxi.png',
+        handler: function (request, h) {
+
+            return h.file('taxi.png');
+        }
+    });
+	
 	server.route({
         method: 'GET',
         path: '/',
