@@ -1,61 +1,15 @@
 header, nav, main, footer {
 	display: block;
 }
+
 * {
 	box-sizing: border-box;
 }
+
 body {
 	background-color: #2F1C1E;
 	color: #542C1B;
 	font-family: Verdana, Arial, sans-serif;
-}
-
-.red {
-	color: red;
-}
-
-#wrapper {
-	background-color: #FDFDFD;
-	width: 80%;
-	margin-top: 0;
-	margin-bottom: 0;
-	margin-left: auto;
-	margin-right: auto;
-	min-width: 1200px;
-	max-width: 1480px;
-}
-
-header {
-	background-color: #364437;
-	color: #FFFFFF;
-	background-image: url(cafeheader.jpg);
-	background-repeat: no-repeat;
-	background-position: right;
-	height: 150px;
-}
-
-h1 {
-	padding-top: 50px;
-	padding-left: 2em;
-}
-
-main {
-	padding-left: 2em;
-	padding-right: 2em;
-	padding-top: 1em;
-	margin-left: 170px;
-	margin-bottom: 2em;
-}
-
-#myButtons {
-	width: 204px;
-	margin: 0 auto;
-}
-
-#myReset, #mySubmit {
-	width: 80px;
-	display: inline;
-	margin: 2px auto;
 }
 
 footer {
@@ -66,98 +20,13 @@ footer {
 	padding: 1em;
 }
 
-#mobile {
-	display: none;
+.red {
+	color: red;
 }
 
-#desktop {
-	display: inline;
-}
-
-label {
-	float: left;
-	display: block;
-	font-weight: bold;
-	width: 9em;
-}
-
-input, textarea {
-	display: block;
-	margin-bottom: 2em;
-}
-
-form {
-	padding: 3em;
-	background-color: #737c73;
-	margin-bottom: 1em;
-}
-
-@media only screen and (max-width: 1024px) {
-	body {
-		margin: 0;
-		padding: 0;
-	}
-	
-	#wrapper {
-		width: 100%;
-		min-width: 0;
-		margin: 0;
-		padding: 0;
-	}
-	
-	header {
-		padding-top: 1px;
-	}
-	
-	main {
-		padding-top: 2.5em;
-		padding-bottom: 2.5em;
-		padding-left: 1em;
-		padding-right: 1em;
-		margin: 0;
-		font-size: 90%;
-		float: none;
-	}
-	
-
-	
-	h2, h3, p ,dl {
-		padding-left: 2em;
-		padding-right: 2em;
-	}
-
-	
-}
-
-@media only screen and (max-width: 768px) {
-	h1 {
-		font-size: 2em;
-		padding-top: 0.25em;
-		padding-left: 1.5em;
-		width: 85%;
-		text-align: center;
-	}
-	
-	
-	main {
-		padding-top: 0;
-	}
-
-	
-	#hero {
-		display: none;
-	}
-	
-	footer {
-		padding: 0.5em;
-		margin: 0;
-	}
-	
-	#mobile {
-		display: inline;
-	}
-	
-	#desktop {
-		display: none;
-	}
+#wrapper {
+	background-color: #FDFDFD;
+	width: 80%;
+	text-align: center;
+	margin: 0 auto;
 }

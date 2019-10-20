@@ -1,21 +1,142 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<title>CAD Clothing | Home</title>
+		<title>CAD Clothing</title>
 		<meta charset="utf-8">
-		<link rel="stylesheet" href="styles/styles.css">
-		<meta name="description" content="This is the initial page of the website.">
-		<link rel="icon" href="favicon.ico" type="image/x-icon">
+		<link rel="stylesheet" href="styles.css">
+		<meta name="description" content="We sell cool clothes!">
+		<link rel="icon" href="favicon/favicon.ico" type="image/x-icon"/>
+		<script>
+			var age;
+			var address;
+			var zipcode;
+			var gender;
+			var hasKids;
+		
+			function textCabs() {
+				window.alert('Commented Out to Save Texts.');
+				//window.location = 'index.html/textCabs';
+			}
+			
+			function emailHotels() {
+				window.location = 'index.html/emailHotels';
+			}
+			
+			function emailMovers() {
+				window.location = 'index.html/emailMovers';
+			}
+			
+			function ageFunct() {
+				age = document.getElementById('age').value;
+				if(age < 1) {
+				}else if(age < 18) {
+					window.location = 'https://des.az.gov/services/child-and-family/child-care/contact-child-care-administration';
+				}else{
+					let infoForm = document.getElementById('infoPrompt');
+					infoForm.removeAttribute("hidden");
+					let ageForm = document.getElementById('agePrompt');
+					ageForm.hidden = "true";
+				}
+			}
+			
+			function infoFunct() {
+				var selectedGender;
+				var selectedHasKids;
+			
+				address = document.getElementById('address').value;
+				zipcode = document.getElementById('zipcode').value;
+				gender = document.getElementsByName('myGender');
+				hasKids = document.getElementsByName('myKids');				
+				
+				for(var i = 0, length = gender.length; i < length; i++) {
+					if(gender[i].checked) {
+						selectedGender = gender[i].value;
+					}
+				}
+				
+				for(var i = 0, length = hasKids.length; i < length; i++) {
+					if(hasKids[i].checked) {
+						selectedHasKids = hasKids[i].value;
+					}
+				}
+				
+				//window.alert('address: ' + address	+ '\nzipcode: ' + zipcode + '\ngender: ' + selectedGender +'\nkids: ' + selectedHasKids);
+				
+				if(address && zipcode && selectedGender && selectedHasKids) {
+					let shirtForm = document.getElementById('shirtPrompt');
+					shirtForm.removeAttribute("hidden");
+					let infoForm = document.getElementById('infoPrompt');
+					infoForm.hidden = "true";
+				}
+			}
+		</script>
 	</head>
 	<body>
 		<div id="wrapper">
 			<header>
-				<h1>Welcome to CAD Clothing</h1>
+				<h1>CAD Clothing</h1>
 			</header>
 			
 			<main>
-				<a href="checkout.html">Checkout</a>
-				<img src="images/shoppingcart.png" alt="shopping cart" id="logo">
+			
+				<form id="agePrompt" onsubmit="return false;">
+					<label for="age"><span class="red">*</span>Age</label>
+					<input type="text" name="myAge" id="age" required="required">
+					
+					<input type="button" id="ageSubmit" value="Submit" onclick='ageFunct()'>
+				</form>
+				
+				<form hidden id="infoPrompt" onsubmit="return false;">					
+					<label for="address"><span class="red">*</span>Shipping Address</label>
+					<input type="text" name="myAddress" id="address" required="required" placeholder="Number and Street Name">
+					
+					<label for="zipcode"><span class="red">*</span>Zipcode</label>
+					<input type="text" name="myZipcode" id="zipcode" required="required" placeholder="XXXXX">
+					
+					<section id="genderButtons">
+						<label for="genderButtons"><span class="red">*</span>Gender:</label>
+
+						<label for="male">Male</label>
+						<input type="radio" name="myGender" id="male" value="Male" required="required"/>
+						
+						<label for="female">Female</label>
+						<input type="radio" name="myGender" id="female" value="Female"/>
+						
+						<label for="other">Other</label>
+						<input type="radio" name="myGender" id="other" value="Other"/>
+					</section>
+					
+					<label><span class="red">*</span>Do you have kids?</label>
+					<label for="kidsYes">Yes</label>
+					<input type="radio" name="myKids" id="kidsYes" value="Yes" required="required"/>
+					
+					<label for="kidsNo">No</label>
+					<input type="radio" name="myKids" id="kidsNo" value="No"/>
+						
+					<input type="submit" id="infoSubmit" value="Submit" onclick="infoFunct()">
+				</form>
+				
+				<form hidden id="shirtPrompt" onsubmit="return false;">
+					<section id="serviceButtons">
+						<label for="serviceButtons"><span class="red">*</span>Services:</label>
+					
+						<label for="cab">Cab</label>
+						<input type="checkbox" name="myService" id="cab" onclick="$(this).val(this.checked ? 1 : 0)"/>
+						
+						<label for="hotel">Hotel</label>
+						<input type="checkbox" name="myService" id="hotel" value="1"/>
+						
+						<label for="movers">Mover</label>
+						<input type="checkbox" name="myService" id="mover" value="1"/>
+					</section>
+					
+					<label for="police"><span class="red">*</span>Police</label>
+					<select size="1" name="police" id="police" required="required">
+						<option value="">choose option</option>
+						<option value="1">Yes</option>
+						<option value="0">No</option>
+					</select>
+				</form>
 			</main>
 			
 			<footer>
