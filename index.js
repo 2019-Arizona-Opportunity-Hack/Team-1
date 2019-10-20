@@ -105,6 +105,15 @@ const start = async () => {
 		options: {}
 	});
 
+	server.method({
+		method: 'GET',
+		path: '/favicon/favicon.ico'
+		handler: function (request, h) {
+			
+			return h.file('favicon.ico');
+		}
+	});
+
 	server.route({
         method: 'GET',
         path: '/',
