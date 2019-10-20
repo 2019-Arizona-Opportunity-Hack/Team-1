@@ -21,6 +21,24 @@ const start = async () => {
         }
     });
 
+	server.route({
+        method: 'GET',
+        path: '/styles.css',
+        handler: function (request, h) {
+
+            return h.file('styles.css');
+        }
+    });
+
+	server.route({
+        method: 'GET',
+        path: '/shoppingcart.png',
+        handler: function (request, h) {
+
+            return h.file('shoppingcart.png');
+        }
+    });
+
     server.route({
         method: 'GET',
         path: '/index.html',
