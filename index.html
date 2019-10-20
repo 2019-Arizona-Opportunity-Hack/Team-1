@@ -1,21 +1,133 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<title>CAD Clothing | Home</title>
+		<title>CAD Clothing</title>
 		<meta charset="utf-8">
-		<link rel="stylesheet" href="styles/styles.css">
-		<meta name="description" content="This is the initial page of the website.">
-		<link rel="icon" href="favicon.ico" type="image/x-icon">
+		<link rel="stylesheet" href="styles.css">
+		<meta name="description" content="We sell cool clothes!">
+		<script>
+			var age;
+			
+			function unHide() {
+				age = document.getElementById('age').value;
+				if(age == 0) {
+				}else if(age < 18) {
+					window.location = 'https://des.az.gov/services/child-and-family/child-care/contact-child-care-administration';
+				}else{
+					let form = document.getElementById('infoPrompt');
+					form.removeAttribute("hidden");
+				}
+			}
+			
+			var cab, hotel, mover, police;
+			
+			function formSubmission() {
+				cab = document.getElementById('cab').value;
+				hotel = document.getElementById('hotel').value;
+				mover = document.getElementById('mover').value;
+				police = document.getElementById('police').value;
+
+				window.alert('funct');
+				if(mover == 1) {
+					window.alert('mover');
+					// email all movers
+					const Nylas = require('nylas');
+					
+					Nylas.config({
+						clientId: 'dfilawopf14wgkzhzskwrx662',
+						clientSecret: 'ao3won7753y2nkvbnos89zech',
+					});
+					  
+					const nylas = Nylas.with('lk9ZFX8ihdB2Zk7MGbY5p7tApZX5Sf');
+					
+					const draft = nylas.drafts.build({
+						subject: 'With Love, from Nylas',
+						to: [{ name: 'My Nylas Email', email: 'emilio.egnew@gmail.com' }],
+						body: 'Mover Email.'
+					});
+					window.alert('almost');
+					// Send the draft
+					draft.send().then(message => {
+						console.log(`${message.id} was sent`);
+					});
+					window.alert('complete');
+				}
+				
+				if(hotel == 1) {
+					// text all cabs and email all hotels
+				} else if(cab == 1) {
+					// text all cabs
+				}
+				
+				if(police == 1) {
+					// text police
+				}
+			}
+		</script>
 	</head>
 	<body>
 		<div id="wrapper">
 			<header>
-				<h1>Welcome to CAD Clothing</h1>
+				<h1>CAD Clothing</h1>
 			</header>
 			
 			<main>
-				<a href="checkout.html">Checkout</a>
-				<img src="images/shoppingcart.png" alt="shopping cart" id="logo">
+				<form id="agePrompt" action="#">
+					<label for="age"><span class="red">*</span>Age</label>
+					<input type="text" name="myAge" id="age" required="required">
+					
+					<input type="button" id="ageSubmit" value="Submit" onclick='unHide()'>
+				</form>
+					
+				<form hidden id="infoPrompt">
+					<label for="address"><span class="red">*</span>Shipping Address</label>
+					<input type="text" name="myAddress" id="address" required="required" placeholder="Number and Street Name">
+					
+					<label for="zipcode"><span class="red">*</span>Zipcode</label>
+					<input type="text" name="myZipcode" id="zipcode" required="required" placeholder="XXXXX">
+					
+					<section id="genderButtons">
+						<label for="genderButtons"><span class="red">*</span>Gender:</label>
+
+						<label for="male">Male</label>
+						<input type="radio" name="myGender" id="male" value="Male"/>
+						
+						<label for="female">Female</label>
+						<input type="radio" name="myGender" id="female" value="Female"/>
+						
+						<label for="other">Other</label>
+						<input type="radio" name="myGender" id="other" value="Other"/>
+					</section>
+					
+					<label><span class="red">*</span>Do you have kids?</label>
+					<label for="kidsYes">Yes</label>
+					<input type="radio" name="myKids" id="kidsYes" value="1"/>
+					
+					<label for="kidsNo">No</label>
+					<input type="radio" name="myKids" id="kidsNo" value="0"/>
+					
+					<section id="serviceButtons">
+						<label for="serviceButtons"><span class="red">*</span>Services:</label>
+					
+						<label for="cab">Cab</label>
+						<input type="checkbox" name="myService" id="cab" value="1"/>
+						
+						<label for="hotel">Hotel</label>
+						<input type="checkbox" name="myService" id="hotel" value="1"/>
+						
+						<label for="movers">Mover</label>
+						<input type="checkbox" name="myService" id="mover" value="1"/>
+					</section>
+					
+					<label for="police"><span class="red">*</span>Police</label>
+					<select size="1" name="police" id="police" required="required">
+						<option value="">choose option</option>
+						<option value="1">Yes</option>
+						<option value="0">No</option>
+					</select>
+					
+					<input type="button" id="infoSubmit" value="Submit" onclick="formSubmission()">
+				</form>
 			</main>
 			
 			<footer>
