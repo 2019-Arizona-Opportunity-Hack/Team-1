@@ -6,9 +6,25 @@
 		<link rel="stylesheet" href="styles.css">
 		<meta name="description" content="This is the initial page of the website.">
 		<link rel="icon" href="favicon.ico" type="image/x-icon">
-		<!--[if lt IE 9]>
-		<script src="html5shiv.js"></script>
-		<![endif]-->
+		<script>
+			var choice;
+	
+			function selectYes() {
+				choice = 1;
+			}
+				
+			function selectNo() {
+				choice = 0;
+			}
+				
+			function checkChoice() {
+				if(choice == 1) {
+					window.location = 'police.html';
+				} else {
+					window.location = 'https://des.az.gov/services/child-and-family/child-care/contact-child-care-administration';
+				}
+			}
+		</script>
 	</head>
 	<body>
 		<div id="wrapper">
