@@ -83,8 +83,17 @@ const start = async () => {
             return h.file('police.html');
         }
     });
-	
-		server.route({
+
+	server.route({
+        method: 'GET',
+        path: '/address.html',
+        handler: function (request, h) {
+
+            return h.file('address.html');
+        }
+    });
+
+	server.route({
         method: 'GET',
         path: '/waiting.html',
         handler: function (request, h) {

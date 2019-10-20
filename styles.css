@@ -10,6 +10,18 @@ body {
 	font-family: Verdana, Arial, sans-serif;
 }
 
+#prompt {
+	width: 960px;
+	height: 300px;
+	margin: auto;
+	background-color: gray;
+	box-shadow: 2px 2px 2px black;
+}
+
+#ageYes, #ageNo {
+	display: inline;
+}
+
 #wrapper {
 	background-color: #FDFDFD;
 	width: 80%;

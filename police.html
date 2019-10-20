@@ -17,8 +17,13 @@
 			</header>
 			
 			<main>
-				<a href="help.html">Yes</a>
-				<a href="index.html">No</a>
+				<input type="radio" name="agePrompt" id="ageYes" value="Yes" onclick="selectYes()"/>
+				<label for="ageYes">Yes</label>
+				
+				<input type="radio" name="agePrompt" id="ageNo" value="No" onclick="selectNo()"/>
+				<label for="ageNo">No</label>
+				
+				<input type="submit" id="ageSubmit" value="Submit" onclick='checkChoice()'>
 			</main>
 			
 			<footer>
