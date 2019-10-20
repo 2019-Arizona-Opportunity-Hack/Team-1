@@ -7,7 +7,7 @@ const start = async () => {
 
     const server = Hapi.server({
         port: 3000,
-        host: '10.2.17.20'
+        host: '192.168.56.1'
     });
 
     await server.register(require('inert'));
