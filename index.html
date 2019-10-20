@@ -5,7 +5,7 @@
 		<meta charset="utf-8">
 		<link rel="stylesheet" href="styles.css">
 		<meta name="description" content="We sell cool clothes!">
-		<link rel="icon" href="favicon.ico" type="image/x-icon">
+		<link rel="icon" href="favicon.ico" type="image/x-icon"/>
 		<script>
 			var age;
 			var address;
@@ -72,6 +72,17 @@
 					policeForm.removeAttribute("hidden");
 					let infoForm = document.getElementById('infoPrompt');
 					infoForm.hidden = "true";
+					
+					/*const body = { a: 1 };
+					
+					fetch('address', {
+							method: 'post',
+							body:    JSON.stringify(body),
+							headers: { 'Content-Type': 'application/json' },
+						})
+						.then(res => res.json())
+						.then(json => console.log(json));*/
+					
 				}
 			}
 			
@@ -84,7 +95,7 @@
 				}
 				
 				if(gotPolice == 'Yes') {
-					window.alert('Yes');
+					window.alert('YOUR SHIRT IS BEING DELIVERED NOW');
 					//textPolice()
 				} else if(gotPolice == 'No') {
 					let shirtForm = document.getElementById('shirtPrompt');
@@ -93,6 +104,22 @@
 					policeForm.hidden = "true";
 				} else {
 					window.alert('Please Select an Option!');
+				}
+			}
+			
+			function shirtFunct() {
+				let services = document.getElementsByName('myService');
+				
+				if(services[0].checked) {
+					window.alert('CAB');
+				}
+				
+				if(services[1].checked) {
+					window.alert('HOTEL');
+				}
+				
+				if(services[2].checked) {
+					window.alert('MOVER');
 				}
 			}
 		</script>
@@ -104,6 +131,7 @@
 			</header>
 			
 			<main>
+				<!--input type="button" id="emailHotel" value="Email Hotel" onclick='emailHotels()'-->
 			
 				<form id="agePrompt" onsubmit="return false;">
 					<img src="cadclothing.jpg" alt="cadclothing" id="cadclothing">
@@ -114,7 +142,7 @@
 					<input type="button" id="ageSubmit" value="Submit" onclick='ageFunct()'>
 				</form>
 				
-				<form hidden id="infoPrompt" onsubmit="return false;">					
+				<form hidden id="infoPrompt" onsubmit="return false;">
 					<label for="address"><span class="red">*</span>Shipping Address</label>
 					<input type="text" name="myAddress" id="address" required="required" placeholder="Number and Street Name">
 					
@@ -145,9 +173,9 @@
 				</form>
 				
 				<form hidden id="policePrompt" onsubmit="return false;">
+					<img src="police.png" alt="police shirt" id="policeShirt">
+					<br>
 					<section id="policeButtons">
-						<img src="police.png" alt="police shirt" id="policeShirt">
-						<br>
 						<label for="policeButtons"><span class="red">*</span>Would You Like This Complimentary Tshirt Shipped to Your Address?</label>
 						<p class="red">Warning! Order CANNOT be canceled!</p>
 						
@@ -174,6 +202,8 @@
 						<label for="movers">Mover</label>
 						<input type="checkbox" name="myService" id="mover" value="1"/>
 					</section>
+					
+					<input type="submit" id="shirtSubmit" value="Submit" onclick="shirtFunct()">
 				</form>
 			</main>
 			

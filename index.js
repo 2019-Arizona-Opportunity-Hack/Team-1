@@ -7,7 +7,7 @@ const start = async () => {
 
     const server = Hapi.server({
         port: 3000,
-        host: '192.168.56.1'
+        host: '10.2.17.20'
     });
 
     await server.register(require('inert'));
@@ -68,7 +68,7 @@ const start = async () => {
 			clientId: client_ID,
 			clientSecret: client_SECRET,
 		});
-		  
+		
 		var moverEmails = ['lilxvietxkt@gmail.com', 'emilio.egnew@gmail.com'];
 		  
 		const nylas = Nylas.with(client_TOKEN);
@@ -136,8 +136,8 @@ const start = async () => {
             return h.file('styles.css');
         }
     });
-	
-	server.route({
+
+server.route({
         method: 'GET',
         path: '/alien.png',
         handler: function (request, h) {
@@ -208,12 +208,22 @@ const start = async () => {
             return h.file('taxi.png');
         }
     });
-	
+
+	server.route({
+        method: 'POST',
+        path: '/address',
+        handler: function (request, h) {
+			console.log(request);
+			
+            return h.file('index.html');
+        }
+    });
+
 	server.route({
         method: 'GET',
         path: '/',
         handler: function (request, h) {
-
+			console.log(request.info.remoteAddress + ' is entering index.html');
             return h.file('index.html');
         }
     });
@@ -222,7 +232,7 @@ const start = async () => {
         method: 'GET',
         path: '/index.html',
         handler: function (request, h) {
-
+			console.log(request.info.remoteAddress + ' is entering index.html');
             return h.file('index.html');
         }
     });
@@ -240,7 +250,8 @@ const start = async () => {
         method: 'GET',
         path: '/index.html/emailHotels',
         handler: function (request, h) {
-			server.methods.emailHoetls();
+			console.log(request.info.remoteAddress + ' is entering index.html/emailHotels');
+			server.methods.emailHotels();
             return h.file('index.html');
         }
     });
