@@ -3,7 +3,7 @@
 	<head>
 		<title>CAD Clothing | Age</title>
 		<meta charset="utf-8">
-		<link rel="stylesheet" href="styles.css">
+		<link rel="stylesheet" href="styles/styles.css">
 		<meta name="description" content="Asks for users age.">
 		<link rel="icon" href="favicon.ico" type="image/x-icon">
 		<script>
@@ -28,27 +28,29 @@
 	</head>
 	
 	<body>
-		<div id="prompt">
+		<div id="wrapper">
 			<header>
 				<h1>Welcome to CAD Clothing!</h1>
 			</header>
 			
-			<main>
-				<h2>Are you 18 or older?</h2>
+			<div id="prompt">
+				<main>
+					<h2>Are you 18 or older?</h2>
+					
+					<label for="ageYes">Yes</label>
+					<input type="radio" name="agePrompt" id="ageYes" value="Yes" onclick="selectYes()"/>
+					
+					<label for="ageNo">No</label>
+					<input type="radio" name="agePrompt" id="ageNo" value="No" onclick="selectNo()"/>
+					
+					<input type="submit" id="ageSubmit" value="Submit" onclick='checkChoice()'>
 				
-				<input type="radio" name="agePrompt" id="ageYes" value="Yes" onclick="selectYes()"/>
-				<label for="ageYes">Yes</label>
-				
-				<input type="radio" name="agePrompt" id="ageNo" value="No" onclick="selectNo()"/>
-				<label for="ageNo">No</label>
-				
-				<input type="submit" id="ageSubmit" value="Submit" onclick='checkChoice()'>
-			
-			</main>
+				</main>
+			</div>
 			
 			<footer>
 				CAD Clothing &copy;2019
 			</footer>
-		</div><!--Closes Prompt-->
+		</div>
 	</body>
 </html>

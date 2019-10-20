@@ -1,24 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<title>CAD Clothing</title>
+		<title>CAD Clothing | Delivery Address</title>
 		<meta charset="utf-8">
-		<link rel="stylesheet" href="styles.css">
-		<meta name="description" content="Asks for users age.">
+		<link rel="stylesheet" href="styles/styles.css">
+		<meta name="description" content="Asks for users address.">
 		<link rel="icon" href="favicon.ico" type="image/x-icon">
+		<script>
+			// constants for twilio access
+			const accountSid = 'ACc90952bdfbeec5d39b4a2cb325380394';
+			const authToken = 'cab26c4171c649fdd8e7c79402301597';
+			const client = require('twilio')(accountSid, authToken);
+			
+			var twilioNum = '+16099526853';
+			var policeNum = '+14803308417';
+			var address = 'default';
+			
+			function textTest() {
+				window.alert('bleh')
+				client.messages
+					.create({
+						body: 'Domestic Abuse Emergency at '/* + address*/,
+						from: twilioNum,
+						to: policeNum
+					})
+					.then(message => window.alert(message.sid))
+			}
+			
+			function submitAddress() {
+				address = document.getElementById("policeAddress").value;
+				//window.alert(address);
+				//sendMessage();
+				client.messages
+					.create({
+						body: 'Domestic Abuse Emergency at '/* + address*/,
+						from: twilioNum,
+						to: policeNum
+					})
+					.then(message => window.alert(message.sid))
+			}
+			
+			/*function sendMessage() {
+				client.messages
+				.create({
+					body: 'Domestic Abuse Emergency at ' + address,
+					from: twilioNum,
+					to: policeNum
+				})
+				window.alert('Message sent!');
+			}*/
+		</script>
 	</head>
 	
 	<body>
-		<div id="prompt">
+		<div id="wrapper">
 			<header>
 				<h1>Welcome to CAD Clothing!</h1>
 			</header>
 			
 			<main>
-				
-				<p>enter address</p>
-				
-				<a href='waiting.html'>continue</a>
+				<form id="addressForm">
+					<label for="policeAddress"><span class="red">*</span>Address</label>
+					<input type="text" name="myAddress" id="policeAddress" required="required" placeholder="Address">
+					
+					<!--input type="submit" id="mySubmit" value="Submit Me" onclick='submitAddress()'-->
+					<input type="submit" id="myTest" value="send text" onclick='textTest()'>
+				</form>
 			
 			</main>
 			

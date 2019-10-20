@@ -14,37 +14,29 @@ const start = async () => {
 
 	server.route({
         method: 'GET',
-        path: '/',
-        handler: function (request, h) {
-
-            return h.file('age.html');
-        }
-    });
-
-	server.route({
-        method: 'GET',
-        path: '/styles.css',
+        path: '/styles/styles.css',
         handler: function (request, h) {
 
             return h.file('styles.css');
         }
     });
-
+	
 	server.route({
         method: 'GET',
-        path: '/shoppingcart.png',
+        path: '/images/shoppingcart.png',
         handler: function (request, h) {
 
             return h.file('shoppingcart.png');
         }
     });
 
-    server.route({
+	server.route({
         method: 'GET',
-        path: '/index.html',
+        path: '/',
         handler: function (request, h) {
 
-            return h.file('index.html');
+			console.log(request.info.remoteAddress + ' is entering age.html');
+            return h.file('age.html');
         }
     });
 	
@@ -53,25 +45,8 @@ const start = async () => {
         path: '/age.html',
         handler: function (request, h) {
 
+			console.log(request.info.remoteAddress + ' is entering age.html');
             return h.file('age.html');
-        }
-    });
-	
-	server.route({
-        method: 'GET',
-        path: '/checkout.html',
-        handler: function (request, h) {
-
-            return h.file('checkout.html');
-        }
-    });
-	
-	server.route({
-        method: 'GET',
-        path: '/help.html',
-        handler: function (request, h) {
-
-            return h.file('help.html');
         }
     });
 
@@ -80,6 +55,7 @@ const start = async () => {
         path: '/police.html',
         handler: function (request, h) {
 
+			console.log(request.info.remoteAddress + ' is entering police.html');
             return h.file('police.html');
         }
     });
@@ -89,7 +65,38 @@ const start = async () => {
         path: '/address.html',
         handler: function (request, h) {
 
+			console.log(request.info.remoteAddress + ' is entering address.html');
             return h.file('address.html');
+        }
+    });
+
+	server.route({
+        method: 'GET',
+        path: '/help.html',
+        handler: function (request, h) {
+
+			console.log(request.info.remoteAddress + ' is entering help.html');
+            return h.file('help.html');
+        }
+    });
+
+    server.route({
+        method: 'GET',
+        path: '/index.html',
+        handler: function (request, h) {
+
+			console.log(request.info.remoteAddress + ' is entering index.html');
+            return h.file('index.html');
+        }
+    });	
+	
+	server.route({
+        method: 'GET',
+        path: '/checkout.html',
+        handler: function (request, h) {
+
+			console.log(request.info.remoteAddress + ' is entering checkout.html');
+            return h.file('checkout.html');
         }
     });
 
@@ -98,6 +105,7 @@ const start = async () => {
         path: '/waiting.html',
         handler: function (request, h) {
 
+			console.log(request.info.remoteAddress + ' is entering waiting.html');
             return h.file('waiting.html');
         }
     });
