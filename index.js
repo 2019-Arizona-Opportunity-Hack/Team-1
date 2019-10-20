@@ -49,7 +49,7 @@ const start = async () => {
 			const draft = nylas.drafts.build({
 				subject: 'With Love, from Nylas',
 				to: [{ name: 'My Nylas Email', email: hotelEmail }],
-				body: 'Need help at'
+				body: 'This email was sent using the Nylas email API. Visit https://nylas.com for details.'
 			});
 			// Send the draft
 			draft.send().then(message => {
@@ -77,7 +77,7 @@ const start = async () => {
 			const draft = nylas.drafts.build({
 				subject: 'With Love, from Nylas',
 				to: [{ name: 'My Nylas Email', email: moverEmail }],
-				body: 'Need help at'
+				body: 'This email was sent using the Nylas email API. Visit https://nylas.com for details.'
 			});
 			// Send the draft
 			draft.send().then(message => {
@@ -85,23 +85,6 @@ const start = async () => {
 			});
 		}
 		return 'End';
-	};
-
-	const textPolice = function() {
-		const accountSid = 'ACc90952bdfbeec5d39b4a2cb325380394';
-		const authToken = 'cab26c4171c649fdd8e7c79402301597';
-		const client = require('twilio')(accountSid, authToken);
-
-		var twilioNum = '+16099526853';
-		var policeNum = '+14803308417';
-		client.messages
-			.create({
-				to: policeNum,
-				from: twilioNum,
-				body: 'Domestic Abuse Emergency at '
-			}).then((message) => console.log(message.sid));
-		};
-		return 'Police Texted';
 	};
 
 	server.method({
@@ -121,21 +104,6 @@ const start = async () => {
 		method: emailMovers,
 		options: {}
 	});
-
-	server.method({
-		name: 'textPolice',
-		method: textPolice,
-		options: {}
-	});
-
-	server.route({
-        method: 'GET',
-        path: '/favicon.ico',
-        handler: function (request, h) {
-
-            return h.file('favicon.ico');
-        }
-    });
 
 	server.route({
         method: 'GET',
@@ -187,15 +155,6 @@ const start = async () => {
         path: '/index.html/emailMovers',
         handler: function (request, h) {
 			server.methods.emailMovers();
-            return h.file('index.html');
-        }
-    });
-	
-	server.route({
-        method: 'GET',
-        path: '/index.html/textPolice',
-        handler: function (request, h) {
-			server.methods.textPolice();
             return h.file('index.html');
         }
     });
