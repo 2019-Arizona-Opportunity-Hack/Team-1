@@ -10,18 +10,6 @@ body {
 	font-family: Verdana, Arial, sans-serif;
 }
 
-#prompt {
-	width: 960px;
-	height: 300px;
-	margin: auto;
-	background-color: gray;
-	box-shadow: 2px 2px 2px black;
-}
-
-#ageYes, #ageNo {
-	display: inline;
-}
-
 #wrapper {
 	background-color: #FDFDFD;
 	width: 80%;
@@ -96,12 +84,15 @@ main {
 	margin-bottom: 1em;
 }
 
-.clear {
-	clear: both;
+#myButtons {
+	width: 204px;
+	margin: 0 auto;
 }
 
-.coffeehouse {
-	font-style: italic;
+#myReset, #mySubmit {
+	width: 80px;
+	display: inline;
+	margin: 2px auto;
 }
 
 footer {
