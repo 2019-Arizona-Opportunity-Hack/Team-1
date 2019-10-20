@@ -7,13 +7,13 @@ header, nav, main, footer {
 }
 
 body {
-	background-color: #2F1C1E;
-	color: #542C1B;
+	background-color: #7B568F;
+	color: #000000;
 	font-family: Verdana, Arial, sans-serif;
 }
 
 footer {
-	background-color: #AFAEB4;
+	background-color: #E6E7E2;
 	font-size: .6em;
 	font-style: italic;
 	text-align: center;
@@ -25,7 +25,7 @@ footer {
 }
 
 #wrapper {
-	background-color: #FDFDFD;
+	background-color: #FFFFFF;
 	width: 80%;
 	text-align: center;
 	margin: 0 auto;
