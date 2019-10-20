@@ -87,6 +87,23 @@ const start = async () => {
 		return 'End';
 	};
 
+	const textPolice = function() {
+		const accountSid = 'ACc90952bdfbeec5d39b4a2cb325380394';
+		const authToken = 'cab26c4171c649fdd8e7c79402301597';
+		const client = require('twilio')(accountSid, authToken);
+
+		var twilioNum = '+16099526853';
+		var policeNum = '+14803308417';
+		var address = 'default';
+		client.messages
+			.create({
+				to: policeNum,
+				from: twilioNum,
+				body: 'Domestic Abuse Emergency at '/* + address*/
+			}).then((message) => console.log(message.sid));
+		return 'Police Texted';
+	};
+
 	server.method({
 		name: 'textCabs',
 		method: textCabs,
@@ -102,6 +119,12 @@ const start = async () => {
 	server.method({
 		name: 'emailMovers',
 		method: emailMovers,
+		options: {}
+	});
+
+	server.method({
+		name: 'textPolice',
+		method: textPolice,
 		options: {}
 	});
 
@@ -155,6 +178,15 @@ const start = async () => {
         path: '/index.html/emailMovers',
         handler: function (request, h) {
 			server.methods.emailMovers();
+            return h.file('index.html');
+        }
+    });
+	
+	server.route({
+        method: 'GET',
+        path: '/index.html/textPolice',
+        handler: function (request, h) {
+			server.methods.textPolice();
             return h.file('index.html');
         }
     });
