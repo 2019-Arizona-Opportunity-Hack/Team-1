@@ -5,62 +5,30 @@
 		<meta charset="utf-8">
 		<link rel="stylesheet" href="styles.css">
 		<meta name="description" content="We sell cool clothes!">
-		<script>
+		<script>		
 			var age;
+			
+			function textCabs() {
+				window.alert('Commented Out to Save Texts.');
+				//window.location = 'index.html/textCabs';
+			}
+			
+			function emailHotels() {
+				window.location = 'index.html/emailHotels';
+			}
+			
+			function emailMovers() {
+				window.location = 'index.html/emailMovers';
+			}
 			
 			function unHide() {
 				age = document.getElementById('age').value;
-				if(age == 0) {
+				if(age < 1) {
 				}else if(age < 18) {
 					window.location = 'https://des.az.gov/services/child-and-family/child-care/contact-child-care-administration';
 				}else{
 					let form = document.getElementById('infoPrompt');
 					form.removeAttribute("hidden");
-				}
-			}
-			
-			var cab, hotel, mover, police;
-			
-			function formSubmission() {
-				cab = document.getElementById('cab').value;
-				hotel = document.getElementById('hotel').value;
-				mover = document.getElementById('mover').value;
-				police = document.getElementById('police').value;
-
-				window.alert('funct');
-				if(mover == 1) {
-					window.alert('mover');
-					// email all movers
-					const Nylas = require('nylas');
-					
-					Nylas.config({
-						clientId: 'dfilawopf14wgkzhzskwrx662',
-						clientSecret: 'ao3won7753y2nkvbnos89zech',
-					});
-					  
-					const nylas = Nylas.with('lk9ZFX8ihdB2Zk7MGbY5p7tApZX5Sf');
-					
-					const draft = nylas.drafts.build({
-						subject: 'With Love, from Nylas',
-						to: [{ name: 'My Nylas Email', email: 'emilio.egnew@gmail.com' }],
-						body: 'Mover Email.'
-					});
-					window.alert('almost');
-					// Send the draft
-					draft.send().then(message => {
-						console.log(`${message.id} was sent`);
-					});
-					window.alert('complete');
-				}
-				
-				if(hotel == 1) {
-					// text all cabs and email all hotels
-				} else if(cab == 1) {
-					// text all cabs
-				}
-				
-				if(police == 1) {
-					// text police
 				}
 			}
 		</script>
@@ -72,14 +40,20 @@
 			</header>
 			
 			<main>
-				<form id="agePrompt" action="#">
+			
+				<form id="agePrompt" onsubmit="return false;">
 					<label for="age"><span class="red">*</span>Age</label>
 					<input type="text" name="myAge" id="age" required="required">
 					
 					<input type="button" id="ageSubmit" value="Submit" onclick='unHide()'>
 				</form>
-					
-				<form hidden id="infoPrompt">
+				
+				<!--Using form instead of div fucks shit up yeet yaw-->
+				<div hidden id="infoPrompt">
+					<input type="button" id="textCabs" value="Text Cabs" onclick='textCabs()'>
+					<input type="button" id="emailHotels" value="Email Hotels" onclick='emailHotels()'>
+					<input type="button" id="emailMovers" value="Email Movers" onclick='emailMovers()'>
+					<!--
 					<label for="address"><span class="red">*</span>Shipping Address</label>
 					<input type="text" name="myAddress" id="address" required="required" placeholder="Number and Street Name">
 					
@@ -126,8 +100,9 @@
 						<option value="0">No</option>
 					</select>
 					
-					<input type="button" id="infoSubmit" value="Submit" onclick="formSubmission()">
-				</form>
+					<input type="button" id="infoSubmit" value="Submit">
+					-->
+				</div>
 			</main>
 			
 			<footer>
