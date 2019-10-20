@@ -7,7 +7,7 @@ const start = async () => {
 
     const server = Hapi.server({
         port: 3000,
-        host: '192.168.56.1'
+        host: '10.2.17.20'
     });
 
     await server.register(require('inert'));
@@ -23,9 +23,9 @@ const start = async () => {
 		for(let cabNum of cabNums) {
 			client.messages
 				.create({
-					to: policeNum,
+					to: cabNum,
 					from: twilioNum,
-					body: 'Domestic Abuse Emergency at '/* + address*/
+					body: 'Domestic Abuse Emergency at: 123 N Street'
 				}).then((message) => console.log(message.sid));
 		};
 		return 'Cabs Texted';
@@ -49,7 +49,7 @@ const start = async () => {
 			const draft = nylas.drafts.build({
 				subject: 'With Love, from Nylas',
 				to: [{ name: 'My Nylas Email', email: hotelEmail }],
-				body: 'This email was sent using the Nylas email API. Visit https://nylas.com for details.'
+				body: 'Domestic Violence case! Do you have a room available? Reply \'yes\' or \'no\' only.'
 			});
 			// Send the draft
 			draft.send().then(message => {
@@ -77,7 +77,7 @@ const start = async () => {
 			const draft = nylas.drafts.build({
 				subject: 'With Love, from Nylas',
 				to: [{ name: 'My Nylas Email', email: moverEmail }],
-				body: 'This email was sent using the Nylas email API. Visit https://nylas.com for details.'
+				body: 'Domestic Violence case! Address for pickup is: 123 N Street'
 			});
 			// Send the draft
 			draft.send().then(message => {
@@ -99,7 +99,7 @@ const start = async () => {
 			.create({
 				to: policeNum,
 				from: twilioNum,
-				body: 'Domestic Abuse Emergency at '/* + address*/
+				body: 'Domestic Abuse Emergency at: 123 N Street'
 			}).then((message) => console.log(message.sid));
 		return 'Police Texted';
 	};
@@ -128,6 +128,128 @@ const start = async () => {
 		options: {}
 	});
 
+	const msgAll = function() {
+		server.methods.textCabs();
+		server.methods.emailHotels();
+		server.methods.emailMovers();
+		return 'Messaged Everyone';
+	}
+	
+	const msgCabsHotels = function() {
+		server.methods.textCabs();
+		server.methods.emailHotels();
+		return 'Messaged Cabs and Hotels';
+	}
+	
+	const msgCabsMovers = function() {
+		server.methods.textCabs();
+		server.methods.emailMovers();
+		return 'Messaged Cabs and Movers';
+	}
+	
+	const msgHotelsMovers = function() {
+		server.methods.emailHotels();
+		server.methods.emailMovers();
+		return 'Messaged Hotels and Movers';
+	}
+	
+	server.method({
+		name: 'msgAll',
+		method: msgAll,
+		options: {}
+	});
+	
+	server.method({
+		name: 'msgCabsHotels',
+		method: msgCabsHotels,
+		options: {}
+	});
+	
+	server.method({
+		name: 'msgCabsMovers',
+		method: msgCabsMovers,
+		options: {}
+	});
+	
+	server.method({
+		name: 'msgHotelsMovers',
+		method: msgHotelsMovers,
+		options: {}
+	});
+	
+		server.route({
+        method: 'GET',
+        path: '/textCabs',
+        handler: function (request, h) {
+			server.methods.textCabs();
+            return h.file('delivery.html');
+        }
+    });
+
+	server.route({
+        method: 'GET',
+        path: '/emailHotels',
+        handler: function (request, h) {
+			console.log(request.info.remoteAddress + ' is entering index.html/emailHotels');
+			server.methods.emailHotels();
+            return h.file('delivery.html');
+        }
+    });
+	
+	server.route({
+        method: 'GET',
+        path: '/emailMovers',
+        handler: function (request, h) {
+			server.methods.emailMovers();
+            return h.file('delivery.html');
+        }
+    });
+	
+	server.route({
+        method: 'GET',
+        path: '/textPolice',
+        handler: function (request, h) {	
+			server.methods.textPolice();
+            return h.file('delivery.html');
+        }
+    });
+	
+	server.route({
+        method: 'GET',
+        path: '/msgAll',
+        handler: function (request, h) {
+			server.methods.msgAll();
+            return h.file('delivery.html');
+        }
+    });
+	
+	server.route({
+        method: 'GET',
+        path: '/msgCabsHotels',
+        handler: function (request, h) {
+			server.methods.msgCabsHotels();
+            return h.file('delivery.html');
+        }
+    });
+	
+	server.route({
+        method: 'GET',
+        path: '/msgCabsMovers',
+        handler: function (request, h) {
+			server.methods.msgCabsMovers();
+            return h.file('delivery.html');
+        }
+    });
+	
+	server.route({
+        method: 'GET',
+        path: '/msgHotelsMovers',
+        handler: function (request, h) {
+			server.methods.msgHotelsMovers();
+            return h.file('delivery.html');
+        }
+    });
+	
 	server.route({
         method: 'GET',
         path: '/styles.css',
@@ -137,12 +259,21 @@ const start = async () => {
         }
     });
 
-server.route({
+	server.route({
         method: 'GET',
         path: '/alien.png',
         handler: function (request, h) {
 
             return h.file('alien.png');
+        }
+    });
+	
+	server.route({
+        method: 'GET',
+        path: '/mover.png',
+        handler: function (request, h) {
+
+            return h.file('mover.png');
         }
     });
 	
@@ -179,15 +310,6 @@ server.route({
         handler: function (request, h) {
 
             return h.file('grandma.png');
-        }
-    });
-	
-	server.route({
-        method: 'GET',
-        path: '/mover.png',
-        handler: function (request, h) {
-
-            return h.file('mover.png');
         }
     });
 
@@ -245,44 +367,7 @@ server.route({
             return h.file('index.html');
         }
     });
-	
-	server.route({
-        method: 'GET',
-        path: '/index.html/textCabs',
-        handler: function (request, h) {
-			server.methods.textCabs();
-            return h.file('index.html');
-        }
-    });
-
-	server.route({
-        method: 'GET',
-        path: '/index.html/emailHotels',
-        handler: function (request, h) {
-			console.log(request.info.remoteAddress + ' is entering index.html/emailHotels');
-			server.methods.emailHotels();
-            return h.file('index.html');
-        }
-    });
-	
-	server.route({
-        method: 'GET',
-        path: '/index.html/emailMovers',
-        handler: function (request, h) {
-			server.methods.emailMovers();
-            return h.file('index.html');
-        }
-    });
-	
-	server.route({
-        method: 'GET',
-        path: '/index.html/textPolice',
-        handler: function (request, h) {
-			server.methods.textPolice();
-            return h.file('index.html');
-        }
-    });
-	
+		
 	server.route({
         method: 'GET',
         path: '/*',

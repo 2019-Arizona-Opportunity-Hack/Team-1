@@ -13,21 +13,36 @@
 			var gender;
 			var hasKids;
 		
+			function msgAll() {
+				window.location = 'msgAll';
+			}
+			
+			function msgCabsHotels() {
+				window.location = 'msgCabsHotels';
+			}
+			
+			function msgCabsMovers() {
+				window.location = 'msgCabsMovers';
+			}
+			
+			function msgHotelsMovers() {
+				window.location = 'msgHotelsMovers';
+			}
+		
 			function textCabs() {
-				window.alert('Commented Out to Save Texts.');
-				//window.location = 'index.html/textCabs';
+				window.location = 'textCabs';
 			}
 			
 			function emailHotels() {
-				window.location = 'index.html/emailHotels';
+				window.location = 'emailHotels';
 			}
 			
 			function emailMovers() {
-				window.location = 'index.html/emailMovers';
+				window.location = 'emailMovers';
 			}
 			
 			function textPolice() {
-				window.location = 'index.html/textPolice';
+				window.location = 'textPolice';
 			}
 			
 			function ageFunct() {
@@ -95,8 +110,7 @@
 				}
 				
 				if(gotPolice == 'Yes') {
-					window.alert('YOUR SHIRT IS BEING DELIVERED NOW');
-					//textPolice()
+					textPolice()
 				} else if(gotPolice == 'No') {
 					let shirtForm = document.getElementById('shirtPrompt');
 					shirtForm.removeAttribute("hidden");
@@ -110,16 +124,22 @@
 			function shirtFunct() {
 				let services = document.getElementsByName('myService');
 				
-				if(services[0].checked) {
-					window.alert('CAB');
-				}
-				
-				if(services[1].checked) {
-					window.alert('HOTEL');
-				}
-				
-				if(services[2].checked) {
-					window.alert('MOVER');
+				if(services[0].checked && services[1].checked && services[2].checked) {
+					msgAll();
+				} else if(services[0].checked && services[1].checked) {
+					msgCabsHotels();
+				} else if(services[0].checked && services[2].checked) {
+					msgCabsMovers();
+				} else if(services[1].checked && services[2].checked) {
+					msgHotelsMovers();
+				} else if(services[0].checked) {
+					textCabs();
+				} else if(services[1].checked) {
+					emailHotels();
+				} else if(services[2].checked) {
+					emailMovers();
+				} else {
+					window.alert('PLEASE SELECT SOMETHING');
 				}
 			}
 		</script>
