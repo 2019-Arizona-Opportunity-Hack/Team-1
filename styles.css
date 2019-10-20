@@ -21,19 +21,11 @@ input[type="submit"],
 	input[type="button"],
 	button,
 	.button {
-		-moz-appearance: none;
-		-webkit-appearance: none;
-		-ms-appearance: none;
-		appearance: none;
-		-moz-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
-		-webkit-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
 		-ms-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
 		transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
 		background-color: #FF6382;
 		border-radius: 4px;
 		border: 0;
-		color: !important;
-		cursor: pointer;
 		display: inline-block;
 		font-weight: 200;
 		height: 1.85em;
@@ -106,3 +98,7 @@ input#age {
 	margin-bottom: 1em;
 }
 
+img {
+	width: 50%;
+	height: 50%;
+}

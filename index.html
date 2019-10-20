@@ -169,6 +169,7 @@
 					<label for="kidsNo">No</label>
 					<input type="radio" name="myKids" id="kidsNo" value="No"/>
 						
+					<br>
 					<input type="submit" id="infoSubmit" value="Submit" onclick="infoFunct()">
 				</form>
 				
@@ -185,27 +186,36 @@
 						<label for="policeNo">No</label>
 						<input type="radio" name="myPolice" id="policeNo" value="No"/>
 					</section>
+					<br>
 					
 					<input type="submit" id="policeSubmit" value="Submit" onclick="policeFunct()">
+					
 				</form>
 				
 				<form hidden id="shirtPrompt" onsubmit="return false;">
 					<section id="serviceButtons">
 						<label for="serviceButtons"><span class="red">*</span>Services:</label>
-					
-						<label for="cab">Cab</label>
+						<br>
+						<img src="taxi.png" label for="cab" alt="cab" id="cabShirt">
+						<br>
 						<input type="checkbox" name="myService" id="cab" onclick="$(this).val(this.checked ? 1 : 0)"/>
 						
-						<label for="hotel">Hotel</label>
+						<br>
+						<img src="hotel.png" label for="hotel" alt="hotel" id="hotelShirt">
+						<br>
 						<input type="checkbox" name="myService" id="hotel" value="1"/>
 						
-						<label for="movers">Mover</label>
+						<br>
+						<img src="mover.png" label for="mover" alt="mover" id="moverShirt">
+						<br>
 						<input type="checkbox" name="myService" id="mover" value="1"/>
+						
 					</section>
 					
 					<input type="submit" id="shirtSubmit" value="Submit" onclick="shirtFunct()">
 				</form>
 			</main>
+			<br>
 			
 			<footer>
 				CAD Clothing &copy;2019

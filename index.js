@@ -181,6 +181,15 @@ server.route({
             return h.file('grandma.png');
         }
     });
+	
+	server.route({
+        method: 'GET',
+        path: '/mover.png',
+        handler: function (request, h) {
+
+            return h.file('mover.png');
+        }
+    });
 
 	server.route({
         method: 'GET',
